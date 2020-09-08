@@ -75,3 +75,31 @@ function openy_gc_storage_update_8003() {
     'field.storage.node.field_gc_video_category',
   ]);
 }
+
+/**
+ * Add the "Link to Login page" field.
+ */
+function openy_gc_storage_update_8004() {
+  $config_dir = drupal_get_path('module', 'openy_gc_storage');
+  $config_dir .= '/config/install/';
+  // Import new configuration.
+  $config_importer = \Drupal::service('openy_upgrade_tool.importer');
+  $config_importer->setDirectory($config_dir);
+  $config_importer->importConfigs([
+    'field.storage.paragraph.field_link_to_login_page',
+    'field.field.paragraph.gated_content.field_link_to_login_page',
+  ]);
+
+  // Update existing configs.
+  $param_updater = \Drupal::service('openy_upgrade_tool.param_updater');
+  $update_parts = ['dependencies', 'content'];
+  $configs_to_update = [
+    'core.entity_form_display.paragraph.gated_content.default',
+    'core.entity_view_display.paragraph.gated_content.default',
+  ];
+  foreach ($configs_to_update as $config) {
+    foreach ($update_parts as $part) {
+      $param_updater->update($config_dir . $config . '.yml', $config, $part);
+    }
+  }
+}
