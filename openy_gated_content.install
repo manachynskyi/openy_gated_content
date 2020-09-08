@@ -35,3 +35,20 @@ function openy_gated_content_update_8002() {
     'components'
   );
 }
+
+/**
+ * Add field to Login page.
+ */
+function openy_gated_content_update_8003() {
+  $config_dir = drupal_get_path('module', 'openy_gated_content');
+  $config_dir .= '/config/install/';
+  // Import new configuration.
+  $config_importer = \Drupal::service('openy_upgrade_tool.importer');
+  $config_importer->setDirectory($config_dir);
+  $config_importer->importConfigs([
+    'field.storage.paragraph.gated_content.field_link_to_login_page',
+    'field.field.paragraph.gated_content.field_link_to_login_page',
+    'core.entity_form_display.paragraph.gated_content.default',
+    'core.entity_view_display.paragraph.gated_content.default',
+  ]);
+}

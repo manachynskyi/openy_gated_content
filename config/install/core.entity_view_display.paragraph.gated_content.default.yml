@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.gated_content.field_link_to_login_page
+    - paragraphs.paragraphs_type.gated_content
+  module:
+    - link
+id: paragraph.gated_content.default
+targetEntityType: paragraph
+bundle: gated_content
+mode: default
+content:
+  field_link_to_login_page:
+    weight: 0
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+hidden: { }

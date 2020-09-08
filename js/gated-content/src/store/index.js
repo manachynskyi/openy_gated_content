@@ -18,6 +18,7 @@ const vuexLocalStorage = new VuexPersistence({
     auth: {
       user: state.auth.user,
       loggedIn: state.auth.loggedIn,
+      destination: state.auth.destination,
     },
   }),
 });

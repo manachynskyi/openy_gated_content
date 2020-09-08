@@ -20,6 +20,7 @@ function openy_gated_content_theme() {
       'variables' => [
         'auth_provider_id' => '',
         'auth_configuration' => '',
+        'login_url' => '',
       ],
     ],
     'paragraph__gated_content_login' => [
@@ -48,6 +49,11 @@ function openy_gated_content_preprocess_paragraph(&$variables) {
   if ($variables['paragraph']->getType() === 'gated_content_login') {
     $variables['app_url'] = $variables['paragraph']
       ->field_link_to_gated_content_app->get(0)->getUrl()->toString();
+  }
+
+  if ($variables['paragraph']->getType() === 'gated_content') {
+    $variables['login_url'] = $variables['paragraph']
+      ->field_link_to_login_page->get(0)->getUrl()->toString();
   }
 
   $variables['#cache']['tags'][] = 'config:openy_gated_content.settings';

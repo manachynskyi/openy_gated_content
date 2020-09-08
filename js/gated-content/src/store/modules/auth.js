@@ -8,6 +8,7 @@ export default {
     user: {},
     loggedIn: false,
     appUrl: '',
+    destination: '',
   },
   actions: {
     authorize(context, user) {
@@ -22,6 +23,9 @@ export default {
     },
     setAppUrl(context, appUrl) {
       context.commit('setAppUrl', appUrl);
+    },
+    setDestination(context, url) {
+      context.commit('setDestination', url);
     },
   },
   mutations: {
@@ -39,11 +43,15 @@ export default {
     setAppUrl(state, appUrl) {
       state.appUrl = appUrl;
     },
+    setDestination(state, url) {
+      state.destination = url;
+    },
   },
   getters: {
     isLoggedIn: (state) => state.loggedIn,
     authPlugin: (state) => state.authPlugin,
     getAppUrl: (state) => state.appUrl,
+    getDestination: (state) => state.destination,
     getUser: (state) => state.user,
   },
 };
