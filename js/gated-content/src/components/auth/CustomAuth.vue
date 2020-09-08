@@ -85,7 +85,7 @@ export default {
             if (this.$store.getters.getDestination) {
               const hash = this.$store.getters.getDestination;
               this.$store.dispatch('setDestination', '');
-              window.location = appUrl + '#' + hash;
+              window.location = `${appUrl}#${hash}`;
             } else {
               window.location = appUrl;
             }
