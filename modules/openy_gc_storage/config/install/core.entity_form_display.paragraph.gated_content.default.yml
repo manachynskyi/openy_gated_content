@@ -12,13 +12,13 @@ bundle: gated_content
 mode: default
 content:
   field_link_to_login_page:
+    type: link_default
     weight: 0
+    region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-    type: link_default
-    region: content
 hidden:
   created: true
   status: true
