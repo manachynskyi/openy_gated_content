@@ -38,17 +38,11 @@ export default {
   created() {
     this.$store.dispatch('setAppUrl', this.appUrl);
     if (!this.isLoggedIn && this.loginUrl !== undefined && this.loginUrl.length > 0) {
-      this.$store.dispatch('setDestination', window.location.hash);
+      this.$store.dispatch('setDestination', this.$router.landing);
       window.location = this.loginUrl;
     }
     if (this.isLoggedIn && this.appUrl !== undefined && this.appUrl.length > 0) {
-      if (this.$store.auth.destination) {
-        const hash = this.$store.auth.destination;
-        this.$store.dispatch('setDestination', '');
-        window.location = this.appUrl + hash;
-      } else {
-        window.location = this.appUrl;
-      }
+      window.location = this.appUrl;
     }
   },
   mounted() {

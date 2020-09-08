@@ -82,7 +82,13 @@ export default {
             return;
           }
           if (appUrl !== undefined && appUrl.length > 0) {
-            window.location = appUrl;
+            if (this.$store.getters.getDestination) {
+              const hash = this.$store.getters.getDestination;
+              this.$store.dispatch('setDestination', '');
+              window.location = appUrl + '#' + hash;
+            } else {
+              window.location = appUrl;
+            }
           } else {
             this.$router.push({ name: 'Home' }).catch(() => {});
           }

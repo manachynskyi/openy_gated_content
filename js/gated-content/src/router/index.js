@@ -115,6 +115,9 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
+  if (!from.name && !router.landing) {
+    router.landing = to.fullPath;
+  }
   if (to.meta.requiresAuth && !Store.getters.isLoggedIn) {
     return next({ name: 'Login' });
   }
