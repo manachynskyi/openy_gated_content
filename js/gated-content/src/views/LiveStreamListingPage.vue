@@ -11,12 +11,18 @@
 <script>
 import EventListing from '@/components/event/EventListing.vue';
 import { SettingsMixin } from '@/mixins/SettingsMixin';
+import { NavigationTrackingMixin } from '@/mixins/NavigationTrackingMixin';
 
 export default {
   name: 'LiveStreamListingPage',
-  mixins: [SettingsMixin],
+  mixins: [SettingsMixin, NavigationTrackingMixin],
   components: {
     EventListing,
+  },
+  computed: {
+    navigationTitle() {
+      return this.config.components.live_stream.title;
+    },
   },
 };
 </script>

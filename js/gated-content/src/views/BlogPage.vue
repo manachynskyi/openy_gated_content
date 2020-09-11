@@ -119,6 +119,12 @@ export default {
           this.loading = false;
         }).then(() => {
           this.$log.trackEventEntityView('node', 'vy_blog_post', this.blog.attributes.drupal_internal__nid);
+          this.$log.trackNavigation({
+            route: this.$route.name,
+            path: this.$route.fullPath,
+            title: this.blog.attributes.title,
+            object: this.blog,
+          });
         })
         .catch((error) => {
           this.error = true;

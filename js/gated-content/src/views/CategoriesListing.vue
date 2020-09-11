@@ -20,10 +20,11 @@ import client from '@/client';
 import CategoryTeaser from '@/components/video/CategoryTeaser.vue';
 import Spinner from '@/components/Spinner.vue';
 import { JsonApiCombineMixin } from '@/mixins/JsonApiCombineMixin';
+import { NavigationTrackingMixin } from '@/mixins/NavigationTrackingMixin';
 
 export default {
   name: 'CategoriesListing',
-  mixins: [JsonApiCombineMixin],
+  mixins: [JsonApiCombineMixin, NavigationTrackingMixin],
   components: {
     CategoryTeaser,
     Spinner,
@@ -61,6 +62,9 @@ export default {
     },
     title() {
       return this.type === 'video' ? 'Video categories' : 'Blog categories';
+    },
+    navigationTitle() {
+      return this.title;
     },
   },
   methods: {

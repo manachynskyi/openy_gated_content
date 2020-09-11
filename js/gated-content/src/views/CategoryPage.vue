@@ -86,6 +86,14 @@ export default {
           this.category = response.data.data;
           this.loading = false;
         })
+        .then(() => {
+          this.$log.trackNavigation({
+            route: this.$route.name,
+            path: this.$route.fullPath,
+            title: this.category.attributes.name,
+            object: this.category,
+          });
+        })
         .catch((error) => {
           this.error = true;
           this.loading = false;

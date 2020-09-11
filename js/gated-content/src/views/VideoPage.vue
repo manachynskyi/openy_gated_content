@@ -151,6 +151,12 @@ export default {
           this.loading = false;
         }).then(() => {
           this.$log.trackEventEntityView('node', 'gc_video', this.video.attributes.drupal_internal__nid);
+          this.$log.trackNavigation({
+            route: this.$route.name,
+            path: this.$route.fullPath,
+            title: this.video.attributes.title,
+            object: this.video,
+          });
         })
         .catch((error) => {
           this.error = true;

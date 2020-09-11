@@ -18,9 +18,11 @@ import CustomAuth from '@/components/auth/CustomAuth.vue';
 import DaxkoBarcode from '@/components/auth/DaxkoBarcode.vue';
 import DaxkoSSO from '@/components/auth/DaxkoSSO.vue';
 import PersonifyAuth from '@/components/auth/PersonifyAuth.vue';
+import { NavigationTrackingMixin } from '@/mixins/NavigationTrackingMixin';
 
 export default {
   name: 'Login',
+  mixins: [NavigationTrackingMixin],
   components: {
     DaxkoBarcode,
     DaxkoSSO,
@@ -35,6 +37,9 @@ export default {
   computed: {
     authPlugin() {
       return this.$store.getters.authPlugin;
+    },
+    navigationTitle() {
+      return 'Sign In';
     },
   },
   methods: {

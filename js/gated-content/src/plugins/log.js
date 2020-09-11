@@ -27,6 +27,12 @@ const Log = {
         });
         document.body.dispatchEvent(event);
       },
+      trackNavigation(detail) {
+        const event = new CustomEvent('virtual-y-navigation', {
+          detail,
+        });
+        document.body.dispatchEvent(event);
+      },
     };
   },
 };

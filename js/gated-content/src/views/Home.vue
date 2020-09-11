@@ -39,10 +39,11 @@ import BlogListing from '@/components/blog/BlogListing.vue';
 import VideoListing from '@/components/video/VideoListing.vue';
 import EventListing from '@/components/event/EventListing.vue';
 import { SettingsMixin } from '@/mixins/SettingsMixin';
+import { NavigationTrackingMixin } from '@/mixins/NavigationTrackingMixin';
 
 export default {
   name: 'Home',
-  mixins: [SettingsMixin],
+  mixins: [SettingsMixin, NavigationTrackingMixin],
   components: {
     BlogListing,
     VideoListing,
@@ -51,6 +52,11 @@ export default {
   methods: {
     isActive(component) {
       return this.config.components[component].status;
+    },
+  },
+  computed: {
+    navigationTitle() {
+      return 'Home';
     },
   },
 };

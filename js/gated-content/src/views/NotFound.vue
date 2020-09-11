@@ -3,7 +3,15 @@
 </template>
 
 <script>
+import { NavigationTrackingMixin } from '@/mixins/NavigationTrackingMixin';
+
 export default {
   name: 'NotFound',
+  mixins: [NavigationTrackingMixin],
+  computed: {
+    navigationTitle() {
+      return 'Not Found';
+    },
+  },
 };
 </script>

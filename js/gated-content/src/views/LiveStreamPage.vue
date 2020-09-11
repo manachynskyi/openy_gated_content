@@ -161,6 +161,12 @@ export default {
           this.loading = false;
         }).then(() => {
           this.$log.trackEventEntityView('series', 'live_stream', this.video.attributes.drupal_internal__id);
+          this.$log.trackNavigation({
+            route: this.$route.name,
+            path: this.$route.fullPath,
+            title: this.video.attributes.title,
+            object: this.video,
+          });
         })
         .catch((error) => {
           this.error = true;
