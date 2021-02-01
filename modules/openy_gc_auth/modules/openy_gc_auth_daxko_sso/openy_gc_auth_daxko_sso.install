@@ -9,7 +9,7 @@
  * Update configuration.
  */
 function openy_gc_auth_daxko_sso_update_8001(&$sandbox) {
-  $config_dir = drupal_get_path('module', 'openy_gc_auth_daxko_sso') . '/config/';
+  $config_dir = drupal_get_path('module', 'openy_gc_auth_daxko_sso') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'openy_gc_auth.provider.daxko_sso' => [
@@ -31,7 +31,7 @@ function openy_gc_auth_daxko_sso_update_8001(&$sandbox) {
  * Add value for login_mode variable.
  */
 function openy_gc_auth_daxko_sso_update_8002(&$sandbox) {
-  $config_dir = drupal_get_path('module', 'openy_gc_auth_daxko_sso') . '/config/';
+  $config_dir = drupal_get_path('module', 'openy_gc_auth_daxko_sso') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'openy_gc_auth.provider.daxko_sso' => [
