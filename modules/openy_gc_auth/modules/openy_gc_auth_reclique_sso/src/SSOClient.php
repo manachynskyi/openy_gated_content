@@ -4,7 +4,7 @@ namespace Drupal\openy_gc_auth_reclique_sso;
 
 use Drupal\Core\Access\CsrfTokenGenerator;
 use Drupal\Core\Config\ConfigFactoryInterface;
-use Drupal\Core\Logger\LoggerChannelFactory;
+use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\TempStore\PrivateTempStoreFactory;
 use Drupal\Core\Url;
 use GuzzleHttp\Client as GuzzleHttpClient;
@@ -30,7 +30,7 @@ class SSOClient {
   /**
    * Logger Factory.
    *
-   * @var \Drupal\Core\Logger\LoggerChannelFactory
+   * @var \Drupal\Core\Logger\LoggerChannelFactoryInterface
    */
   protected $logger;
 
@@ -72,8 +72,8 @@ class SSOClient {
   /**
    * RecliqueClientService constructor.
    *
-   * @param \Drupal\Core\Logger\LoggerChannelFactory $loggerFactory
-   *   LoggerChannelFactory instance.
+   * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $loggerFactory
+   *   LoggerChannelFactoryInterface instance.
    * @param \Drupal\Core\Config\ConfigFactoryInterface $configFactory
    *   ConfigFactoryInterface instance.
    * @param \GuzzleHttp\Client $client
@@ -84,7 +84,7 @@ class SSOClient {
    *   TempStore service.
    */
   public function __construct(
-    LoggerChannelFactory $loggerFactory,
+    LoggerChannelFactoryInterface $loggerFactory,
     ConfigFactoryInterface $configFactory,
     GuzzleHttpClient $client,
     CsrfTokenGenerator $csrfToken,
